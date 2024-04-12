@@ -6,12 +6,11 @@ import com.feedingindia.insights.models.Transaction;
 import com.feedingindia.insights.repository.CategoryRepo;
 import com.feedingindia.insights.repository.TransactionRepo;
 import com.feedingindia.insights.service.TransactionService;
-import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
+
+@Service
 public class TransactionServiceImpl implements TransactionService {
 
     private final TransactionRepo transactionRepo;
@@ -26,13 +25,6 @@ public class TransactionServiceImpl implements TransactionService {
 
 
 
-    @Override
-    public List<Category> getAllCategories() {
-        List<Category> categoryList = categoryRepo.findAllCategories();
-
-        // TODO: Throw new Excpetion if categoriesList is empty
-        return categoryList;
-    }
 
     @Override
     public void recordTransaction(TransactionDTO transactionDTO) throws Exception {
