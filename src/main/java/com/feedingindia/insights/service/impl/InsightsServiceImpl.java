@@ -7,9 +7,7 @@ import com.feedingindia.insights.repository.TransactionRepo;
 import com.feedingindia.insights.service.InsightsService;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class InsightsServiceImpl implements InsightsService {
@@ -56,6 +54,11 @@ public class InsightsServiceImpl implements InsightsService {
         calculateMinAndMax(insightsTimelineDTO);
 
         return insightsTimelineDTO;
+    }
+
+    @Override
+    public List<InsightsTimelineEnum> getAvailableInsightsTimeline() {
+        return new ArrayList<>(Arrays.asList(InsightsTimelineEnum.values()));
     }
 
 

@@ -2,6 +2,7 @@ package com.feedingindia.insights.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
 
@@ -14,6 +15,9 @@ import java.util.Date;
 @NoArgsConstructor
 public class Transaction {
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     private Integer id;
 
     @Column(name = "transaction_date", nullable = false)

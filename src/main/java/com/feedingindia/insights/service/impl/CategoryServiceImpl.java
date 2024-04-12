@@ -1,5 +1,7 @@
 package com.feedingindia.insights.service.impl;
 
+import com.feedingindia.insights.exception.CustomException;
+import com.feedingindia.insights.exception.ErrorCode;
 import com.feedingindia.insights.models.Category;
 import com.feedingindia.insights.repository.CategoryRepo;
 import com.feedingindia.insights.service.CategoryService;
@@ -17,10 +19,10 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryRepo = categoryRepo;
     }
     @Override
-    public List<Category> getAllCategories() {
+    public List<Category> getAllCategories() throws CustomException {
         List<Category> categoryList = categoryRepo.findAll();
 
-        // TODO: Throw new Excpetion if categoriesList is empty
+        if(categoryList.isEmpty()) throw new CustomException(ErrorCode.EMPTY_CATEGORIES, ErrorCode.EMPTY_CATEGORIES.getMessage());
         return categoryList;
     }
 
